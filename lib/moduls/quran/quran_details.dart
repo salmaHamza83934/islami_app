@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:islami_app/moduls/quran/sura_model.dart';
 
 class QuranDetails extends StatefulWidget {
-  static const String routName = 'quran_details';
+  static const String routeName = 'quran_details';
 
   @override
   State<QuranDetails> createState() => _QuranDetailsState();
