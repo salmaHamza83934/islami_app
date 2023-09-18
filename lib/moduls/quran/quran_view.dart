@@ -160,7 +160,8 @@ class QuranView extends StatelessWidget {
             child: ListView.builder(
           itemBuilder: (context, index) => GestureDetector(
             onTap: (){
-              Navigator.pushNamed(context, QuranDetails.routName,arguments: SuraModel(suraNames[index],index));
+              Navigator.pushNamed(context, QuranDetails.routeName,
+                  arguments: SuraModel(suraNames[index], index));
             },
             child: QuranItem(
               suraName: suraNames[index],
