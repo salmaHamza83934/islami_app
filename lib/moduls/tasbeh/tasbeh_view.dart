@@ -6,6 +6,7 @@ class TasbehView extends StatefulWidget {
 }
 
 class _TasbehViewState extends State<TasbehView> {
+  double turns = 0;
   int counter = 0;
   List<String> tasbeh = [
     'سبحان الله',
@@ -25,8 +26,10 @@ class _TasbehViewState extends State<TasbehView> {
           width: MediaQuery.of(context).size.width,
           child: GestureDetector(
             onTap: () {
-              counter++;
-              setState(() {});
+              setState(() {
+                turns += 1 / 50;
+                counter++;
+              });
             },
             child: Stack(
               alignment: Alignment.topCenter,
@@ -38,8 +41,12 @@ class _TasbehViewState extends State<TasbehView> {
                 ),
                 Positioned(
                   top: 93,
-                  child: Image.asset('assets/images/body_sebha_logo.png'),
-                )
+                  child: AnimatedRotation(
+                    turns: turns,
+                    duration: Duration(milliseconds: 400),
+                    child: Image.asset('assets/images/body_sebha_logo.png'),
+                  ),
+                ),
               ],
             ),
           ),
@@ -69,7 +76,7 @@ class _TasbehViewState extends State<TasbehView> {
 
   void increaseCounter() {
     setState(() {
-      if (counter == 5) {
+      if (counter > 5) {
         counter = 0; // Reset counter
         tasbeh.add(
             tasbeh.removeAt(0)); // Move first element to the end of the list
