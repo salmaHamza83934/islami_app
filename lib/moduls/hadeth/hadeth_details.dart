@@ -34,9 +34,15 @@ class HadethDetails extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    args.title,
-                    style: theme.textTheme.bodyLarge,
+                  Container(
+                    width: 250,
+                    child: Text(
+                      args.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.bodyLarge,
+                      textAlign: TextAlign.right,
+                    ),
                   ),
                 ],
               ),
