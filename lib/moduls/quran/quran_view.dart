@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/moduls/quran/quran_details.dart';
 import 'package:islami_app/moduls/quran/quran_item.dart';
 import 'package:islami_app/moduls/quran/sura_model.dart';
@@ -136,7 +137,7 @@ class QuranView extends StatelessWidget {
           children: [
             Expanded(
                 child: Text(
-              'رقم السورة',
+                  AppLocalizations.of(context)!.suraNumber,
               textAlign: TextAlign.center,
               style: theme.textTheme.bodyLarge,
             )),
@@ -146,7 +147,7 @@ class QuranView extends StatelessWidget {
               height: 45,
             ),
             Expanded(
-                child: Text('اسم السورة',
+                child: Text(AppLocalizations.of(context)!.suraName,
                     textAlign: TextAlign.center,
                     style: theme.textTheme.bodyLarge)),
           ],
@@ -160,7 +161,8 @@ class QuranView extends StatelessWidget {
             child: ListView.builder(
           itemBuilder: (context, index) => GestureDetector(
             onTap: (){
-              Navigator.pushNamed(context, QuranDetails.routName,arguments: SuraModel(suraNames[index],index));
+              Navigator.pushNamed(context, QuranDetails.routeName,
+                  arguments: SuraModel(suraNames[index], index));
             },
             child: QuranItem(
               suraName: suraNames[index],

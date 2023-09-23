@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/moduls/hadeth/hadeth_view.dart';
 import 'package:islami_app/moduls/quran/quran_view.dart';
 import 'package:islami_app/moduls/radio/radio_view.dart';
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('إسلامي'),
+          title: Text(AppLocalizations.of(context)!.appTitle),
         ),
         body: screens[selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
