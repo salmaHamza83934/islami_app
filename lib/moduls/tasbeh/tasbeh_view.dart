@@ -77,9 +77,8 @@ class _TasbehViewState extends State<TasbehView> {
   void increaseCounter() {
     setState(() {
       if (counter > 5) {
-        counter = 0; // Reset counter
-        tasbeh.add(
-            tasbeh.removeAt(0)); // Move first element to the end of the list
+        counter = 0;
+        tasbeh.add(tasbeh.removeAt(0));
       }
     });
   }

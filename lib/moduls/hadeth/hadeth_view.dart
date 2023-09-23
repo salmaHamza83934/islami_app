@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/moduls/hadeth/hadeth_details.dart';
 import 'package:islami_app/moduls/hadeth/hadeth_model.dart';
 
@@ -28,7 +29,7 @@ class _HadethViewState extends State<HadethView> {
           color: theme.primaryColor,
         ),
         Text(
-          'الأحاديث',
+          AppLocalizations.of(context)!.ahadeth,
           style: theme.textTheme.bodyLarge,
         ),
         Divider(
