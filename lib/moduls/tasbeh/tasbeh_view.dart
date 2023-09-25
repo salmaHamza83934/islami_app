@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class TasbehView extends StatefulWidget {
   @override
@@ -18,6 +20,7 @@ class _TasbehViewState extends State<TasbehView> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     increaseCounter();
     return Column(
       children: [
@@ -37,14 +40,18 @@ class _TasbehViewState extends State<TasbehView> {
                 Positioned(
                   top: 15,
                   left: 175,
-                  child: Image.asset('assets/images/head_sebha_logo.png'),
+                  child: Image.asset(provider.theme == ThemeMode.light
+                      ? 'assets/images/head_sebha_logo.png'
+                      : 'assets/images/head_sebha_logo_dark.png'),
                 ),
                 Positioned(
                   top: 93,
                   child: AnimatedRotation(
                     turns: turns,
                     duration: Duration(milliseconds: 400),
-                    child: Image.asset('assets/images/body_sebha_logo.png'),
+                    child: Image.asset(provider.theme == ThemeMode.light
+                        ? 'assets/images/body_sebha_logo.png'
+                        : 'assets/images/body_sebha_logo_dark.png'),
                   ),
                 ),
               ],
@@ -62,7 +69,7 @@ class _TasbehViewState extends State<TasbehView> {
               height: 70,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Color(0xFFB7935F),
+                color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Text('$counter')),
