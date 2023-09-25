@@ -4,8 +4,10 @@ import 'package:islami_app/moduls/hadeth/hadeth_view.dart';
 import 'package:islami_app/moduls/quran/quran_view.dart';
 import 'package:islami_app/moduls/radio/radio_view.dart';
 import 'package:islami_app/moduls/settings/settings_view.dart';
+import 'package:provider/provider.dart';
 
 import '../moduls/tasbeh/tasbeh_view.dart';
+import '../providers/my_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName='home_screen';
@@ -25,10 +27,14 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/bg.png'), fit: BoxFit.cover,
+          image: AssetImage(provider.theme == ThemeMode.light
+              ? 'assets/images/bg.png'
+              : 'assets/images/dark_bg.png'),
+          fit: BoxFit.cover,
         ),
       ),
       child: Scaffold(
@@ -39,8 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,
           onTap: (int index){
-            setState(() {
-            });
+            setState(() {});
             selectedIndex=index;
           },
           items: [

@@ -2,5 +2,11 @@
   "appTitle": "Islami",
   "suraName": "sura name",
   "suraNumber": "sura number",
-  "ahadeth": "Ahadeth"
+  "ahadeth": "Ahadeth",
+  "english": "English",
+  "arabic": "Arabic",
+  "language": "Language",
+  "mode": "Mode",
+  "light": "Light",
+  "dark": "Dark"
 }
