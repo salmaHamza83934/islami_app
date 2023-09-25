@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/moduls/hadeth/hadeth_model.dart';
+import 'package:islami_app/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadethDetails extends StatelessWidget {
   static const String routeName = 'hadeth_details';
@@ -10,11 +12,13 @@ class HadethDetails extends StatelessWidget {
     var args = ModalRoute.of(context)?.settings.arguments as HadethModel;
     var mediaQuery = MediaQuery.of(context).size;
     var theme = Theme.of(context);
-
+    var provider = Provider.of<MyProvider>(context);
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage('assets/images/bg.png'),
+        image: AssetImage(provider.theme == ThemeMode.light
+            ? 'assets/images/bg.png'
+            : 'assets/images/dark_bg.png'),
         fit: BoxFit.cover,
       )),
       child: Scaffold(
@@ -27,7 +31,7 @@ class HadethDetails extends StatelessWidget {
           height: mediaQuery.height,
           width: mediaQuery.width,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.7),
+            color: theme.colorScheme.background,
             borderRadius: BorderRadius.circular(25),
           ),
           child: Column(

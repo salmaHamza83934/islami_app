@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/moduls/quran/sura_model.dart';
+import 'package:islami_app/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class QuranDetails extends StatefulWidget {
   static const String routeName = 'quran_details';
@@ -18,13 +20,16 @@ class _QuranDetailsState extends State<QuranDetails> {
     var args = ModalRoute.of(context)?.settings.arguments as SuraModel;
     var mediaQuery = MediaQuery.of(context).size;
     var theme = Theme.of(context);
+    var provider = Provider.of<MyProvider>(context);
     if (verses.isEmpty) {
       loadFiles(args.index);
     }
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage('assets/images/bg.png'),
+        image: AssetImage(provider.theme == ThemeMode.light
+            ? 'assets/images/bg.png'
+            : 'assets/images/dark_bg.png'),
         fit: BoxFit.cover,
       )),
       child: Scaffold(
@@ -37,7 +42,7 @@ class _QuranDetailsState extends State<QuranDetails> {
           height: mediaQuery.height,
           width: mediaQuery.width,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.7),
+            color: theme.colorScheme.background,
             borderRadius: BorderRadius.circular(25),
           ),
           child: Column(
